@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-# Author: Yuande Liu <miracle (at) gmail.com>
 
 import random
 import multiprocessing
@@ -22,7 +21,7 @@ class MapReduce(object):
        return reduce_result
 
 def calculator(*args):
-   print multiprocessing.current_process().name,' processing'
+   print multiprocessing.current_process().name,' processing', args
    points, circle_round = args[0]
    points_in_circle = 0
    for i in range(points):
@@ -45,6 +44,7 @@ if __name__ == '__main__':
 
    map_reduce = MapReduce(calculator, count_circle_points, WORKERS_NUM)
    inputs = [(POINTS/WORKERS_NUM, CIRCLE_ROUND)] * WORKERS_NUM
+#   inputs = [ (i, CIRCLE_ROUND) for i in range(10) ]
    all_points_in_circle = map_reduce(inputs)
    ac_as = float(all_points_in_circle) / POINTS
    print 'pi approach to: %7f' % (4*ac_as)
