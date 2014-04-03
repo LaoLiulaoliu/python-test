@@ -57,6 +57,7 @@ def call_with_throttling(func, args=(), kwargs={}, threshold_per_minute=600):
         average_processing_time = (time.time() - started_at) / count
         expected_processing_time = 60. / threshold_per_minute
         if expected_processing_time > average_processing_time:
+#            time.sleep(0.1) # nearly have the same effect
             time.sleep((len(logs)+0.8)*expected_processing_time - len(logs)*average_processing_time)
 
 
