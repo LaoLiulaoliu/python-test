@@ -1,5 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+# circle area = pi * r * r, square area = r * r,
+# pi = circle area / square area
 
 import random
 import multiprocessing
